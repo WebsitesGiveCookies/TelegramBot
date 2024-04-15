@@ -9,7 +9,7 @@ def index():
     return "website is alive"
 
 
-@app.route("/webhook")
+@app.route("/webhook", methods=["POST"])
 def webhook():
     data = request.json()
     chat_ID = "7113566967"
