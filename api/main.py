@@ -1,5 +1,5 @@
-from flask import Flask
-
+from flask import Flask, request
+from requests import post
 
 app = Flask(__name__)
 
@@ -8,4 +8,18 @@ app = Flask(__name__)
 def index():
     return "website is alive"
 
-#app.run()
+
+@app.route("/webhook")
+def webhook():
+    data = request.json()
+    chat_ID = "7113566967"
+    message = data["message"]["text"]
+    url = "https://api.telegram.org/bot7113566967:AAHrW_vKr-_mVM0U--5rFg9MdBEqINSTnfk/sendMessage"
+    answer = {
+        "chat_id": chat_ID,
+        "text": message,
+    }
+    post(url, json=answer)
+
+
+# app.run()
