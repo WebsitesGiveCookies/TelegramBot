@@ -24,3 +24,13 @@ def webhook():
 
 
 # app.run()
+
+@app.get("/send-reminder")
+def send_reminder():
+    
+    answer = {
+        "chat_id": -4161947339,
+        "text": "monkey",
+    }
+    response = post(url="https://api.telegram.org/bot7113566967:AAHrW_vKr-_mVM0U--5rFg9MdBEqINSTnfk/sendMessage", json=answer)
+    return response.json()
