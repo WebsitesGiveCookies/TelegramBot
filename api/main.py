@@ -11,7 +11,7 @@ def index():
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    data = request.json()
+    data = request.json
     chat_ID =  data["message"]["chat"]["id"]
     message = data["message"]["text"]
     url = "https://api.telegram.org/bot7113566967:AAHrW_vKr-_mVM0U--5rFg9MdBEqINSTnfk/sendMessage"
@@ -19,7 +19,8 @@ def webhook():
         "chat_id": chat_ID,
         "text": message,
     }
-    post(url, json=answer)
+    response = post(url, json=answer)
+    return response 
 
 
 # app.run()
